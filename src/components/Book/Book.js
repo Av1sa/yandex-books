@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './Book.css';
+import { useDispatch } from 'react-redux';
 import { BASE_URL_COVER_API } from '../../utils/const';
 import noImage from '../../images/no_image_available.jpeg';
+import ACTIONS from '../../store/actions';
 
 function Book({ book }) {
   const { author_name, title, isbn, cover_i } = book;
   const [imgSrc, setImgSrc] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (cover_i) {
@@ -17,7 +20,13 @@ function Book({ book }) {
     }
   }, []);
 
-  const handleBookClick = () => {};
+  const handleBookClick = () => {
+    dispatch({
+      type: ACTIONS.CLICK_BOOK,
+      payload: { ...book, cover: imgSrc },
+    });
+    dispatch({ type: ACTIONS.TOGGLE_MODAL });
+  };
 
   const handleImageError = () => {
     setImgSrc(noImage);

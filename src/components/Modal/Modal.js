@@ -1,7 +1,9 @@
 import React from 'react';
 import './Modal.css';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Modal() {
+  const isOpen = useSelector((state) => state.modalIsOpen);
   const {
     cover,
     title,
@@ -9,9 +11,12 @@ function Modal() {
     publish_date,
     publisher,
     isbn,
-  } = currentBook;
+  } = useSelector((state) => state.currentBook);
+  const dispatch = useDispatch();
 
-  const handleClose = () => {};
+  const handleClose = () => {
+    dispatch({ type: ACTIONS.TOGGLE_MODAL });
+  };
 
   return (
     <button
