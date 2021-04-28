@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchForm.css';
 import { useDispatch } from 'react-redux';
+import { TIME_BEFORE_AUTOMATIC_SEARCH } from '../../utils/const';
 import ACTIONS from '../../store/actions';
+import bookApi from '../../utils/BookApi';
 
 function SearchForm() {
   const [keyword, setKeyword] = useState('');
+  const [timer, setTimer] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -39,7 +42,12 @@ function SearchForm() {
     }
   };
 
+  useEffect(() => {
+    setTimer(setTimeout(handleSubmit, TIME_BEFORE_AUTOMATIC_SEARCH));
+  }, [keyword]);
+
   const handleChange = (e) => {
+    clearTimeout(timer);
     setKeyword(e.target.value);
   };
 
