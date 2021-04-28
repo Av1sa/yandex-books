@@ -1,0 +1,8 @@
+.books {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 16px;
+  margin: 0;
+  padding: 16px;
+  justify-content: center;
+}
