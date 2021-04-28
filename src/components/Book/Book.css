@@ -38,3 +38,19 @@
   margin: 0 0 12px;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .book {
+    width: 280px;
+  }
+
+  .book__image {
+    height: 200px;
+  }
+
+  .book__title,
+  .book__author {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}

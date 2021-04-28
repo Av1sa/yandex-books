@@ -1,10 +1,11 @@
 import React from 'react';
-import './BookList.css';
 import { useSelector } from 'react-redux';
+import './BookList.css';
 import Book from '../Book/Book';
 
 function BookList() {
   const books = useSelector((state) => state.books);
+
   return (
     <ul className="books">
       {books.map((book) => (

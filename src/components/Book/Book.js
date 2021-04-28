@@ -6,7 +6,9 @@ import noImage from '../../images/no_image_available.jpeg';
 import ACTIONS from '../../store/actions';
 
 function Book({ book }) {
-  const { author_name, title, isbn, cover_i } = book;
+  const {
+    author_name, title, isbn, cover_i,
+  } = book;
   const [imgSrc, setImgSrc] = useState('');
   const dispatch = useDispatch();
 

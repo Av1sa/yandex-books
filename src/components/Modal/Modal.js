@@ -1,6 +1,7 @@
 import React from 'react';
 import './Modal.css';
 import { useSelector, useDispatch } from 'react-redux';
+import ACTIONS from '../../store/actions';
 
 function Modal() {
   const isOpen = useSelector((state) => state.modalIsOpen);
@@ -19,11 +20,7 @@ function Modal() {
   };
 
   return (
-    <button
-      type="button"
-      className={`modal ${isOpen && 'modal_is-open'}`}
-      onClick={handleClose}
-    >
+    <button type="button" className={`modal ${isOpen && 'modal_is-open'}`} onClick={handleClose}>
       <div className="modal__container">
         <img src={cover} alt={title} className="modal__image" />
         <div className="modal__info">
